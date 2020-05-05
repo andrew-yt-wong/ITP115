@@ -7,13 +7,12 @@
 
 from MenuItem import MenuItem
 
-MENU_ITEM_TYPES = ["Drink", "Appetizer", "Entree", "Dessert"]
-
 
 # ---- Menu -------------------------------------------------------------------
 #
 # -----------------------------------------------------------------------------
 class Menu(object):
+    MENU_ITEM_TYPES = ["Drink", "Appetizer", "Entree", "Dessert"]
 
     # ---- __init__ -----------------------------------------------------------
     #
@@ -24,7 +23,7 @@ class Menu(object):
     # -------------------------------------------------------------------------
     def __init__(self, fileName):
         self.menuItemDictionary = {}
-        for item_type in MENU_ITEM_TYPES:
+        for item_type in Menu.MENU_ITEM_TYPES:
             self.menuItemDictionary[item_type] = []
         fileIn = open(fileName, "r")
         for line in fileIn:
@@ -52,9 +51,10 @@ class Menu(object):
     # Description:  print header with type of menu items with the list
     # -------------------------------------------------------------------------
     def printMenuItemsByType(self, item_type):
-        print("-----" + item_type.upper() + "-----")
+        print("\n-----" + item_type.upper() + "-----")
         for i in range(0, self.getNumMenuItemsByType(item_type)):
-            print(str(i) + ") " + self.menuItemDictionary[item_type][i])
+            print(str(i) + ") ", end="")
+            print(self.menuItemDictionary[item_type][i])
 
     # ---- getNumMenuItemsByType ----------------------------------------------
     #
